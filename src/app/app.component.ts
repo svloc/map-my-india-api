@@ -14,18 +14,16 @@ export class AppComponent implements OnInit {
   public map : any;
   constructor(private mapService: MapServiceService) {
   }
-  private token: string;
+  private token: string='397e77ca-d40e-4123-9a36-58c88e588e9f';
 
   ngOnInit(): void {
-    this.map = new MapmyIndia.Map('map',
-    {
-        center: [28.04, 78.2],
-        zoom: 12
-    });
+    this.map = new MapmyIndia.Map("map",{ center:[28.61, 77.23],zoomControl: true,hybrid:true });
+
+    L.marker([28.61, 77.23]).addTo(this.map);
 
     this.mapService.getToken().then((data) => {
       this.token = data['access_token'];
-      console.log(data);
+      console.log(data['access token']);
       localStorage.setItem('Token',data['access_token'])
     });
   }

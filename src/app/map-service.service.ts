@@ -26,11 +26,14 @@ export class MapServiceService {
           .then(
           res => { // Success
               resolve(res);
+              console.log(res);
             }
         );
     });
     return promise;
   }
+
+
 
   autoSuggest(token: string) {
       const _url = this.autoSuggestURL+"&access_token="+token;
